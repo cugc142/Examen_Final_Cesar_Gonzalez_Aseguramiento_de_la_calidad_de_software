@@ -1,11 +1,15 @@
 """Genera entregables a partir de las plantillas del examen y resultados observados.
-Preparación: python -m pip install --target .tools/python python-docx openpyxl
+Preparación: python -m pip install --target .tools/python python-docx openpyxl Pillow
 """
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.tools/python'))
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment
+from openpyxl.drawing.image import Image
+from openpyxl.drawing.spreadsheet_drawing import OneCellAnchor, AnchorMarker
+from openpyxl.drawing.xdr import XDRPositiveSize2D
+from openpyxl.utils.units import pixels_to_EMU
 from docx import Document
 from docx.shared import Inches
 
@@ -14,10 +18,11 @@ DOWNLOADS = Path.home() / 'Downloads'
 OUT = ROOT / 'docs'
 
 def workbook():
-    book = load_workbook(DOWNLOADS / 'Plantilla - Casos de prueba (EJEMPLO).xlsx')
+    book = load_workbook(DOWNLOADS / 'Plantilla - Casos de prueba (EJEMPLO) (1).xlsx')
     sheet = book.active
     sheet['A1'] = 'SUITE DE PRUEBAS - BUGGY CARS RATING · 14/11/2026'
     sheet['A2'] = 'ID'
+    sheet['I2'] = 'Captura del resultado de la página'
     for row in [4, 5, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 26]:
         for col in range(1, 10): sheet.cell(row, col).value = None
     cases = [
@@ -47,20 +52,45 @@ def workbook():
        'Sin sesión no permite votar. Con sesión confirma, suma exactamente 1 y muestra comentario con fecha y autor; no permite otro voto del mismo usuario.',
        'FALLO BUG-001: contador 11043 → 11044 y confirmación correctos; comentario y fecha visibles, autor vacío. Reingreso posterior confirma voto existente sin botón Vote!. Trace y captura en evidencias/automaticos. No se repitió el voto.', 'FALLO']),
     ]
+    screenshots = {
+        4: 'evidencias/automaticos/CP-01.png',
+        5: 'evidencias/automaticos/CP-02.png',
+        12: 'evidencias/manuales/CP-04-03-persistencia.png',
+        13: 'evidencias/manuales/CP-05-02-guardado.png',
+        18: 'evidencias/automaticos/CP-03-autor-ausente.png',
+    }
+    # Replace the template's sample images with actual page screenshots.
+    sheet._images.clear()
     for row, values in cases:
         sheet.row_dimensions[row].height = 205
         for col, value in enumerate(values, 1):
             cell = sheet.cell(row, col, value)
             cell.alignment = Alignment(wrap_text=True, vertical='top')
+        # Keep the actual status in the description; column I contains the evidence.
+        sheet.cell(row, 8).value = f'Estado: {values[8]}.\n\n{values[7]}'
+        sheet.cell(row, 9).value = None
+        image = Image(str(ROOT / screenshots[row]))
+        width = 600
+        height = round(image.height * width / image.width)
+        image.anchor = OneCellAnchor(
+            _from=AnchorMarker(col=8, row=row - 1,
+                               colOff=pixels_to_EMU(8), rowOff=pixels_to_EMU(8)),
+            ext=XDRPositiveSize2D(pixels_to_EMU(width), pixels_to_EMU(height)),
+        )
+        sheet.add_image(image)
+        sheet.row_dimensions[row].height = max(205, (height + 16) * 0.75)
     sheet.column_dimensions['A'].width = 10
     for c in ['B', 'D', 'E', 'F', 'G', 'H']: sheet.column_dimensions[c].width = 38
-    sheet.column_dimensions['I'].width = 22
+    sheet.column_dimensions['I'].width = 89
+    sheet.row_dimensions[2].height = 32
+    sheet['M1'] = None
+    sheet['M2'] = None
     sheet['A25'] = 'OBSERVACIONES DE EJECUCIÓN'
     sheet['B26'] = 'Fecha 14/11/2026 · Windows · Chromium 149.0.7827.55 · Playwright 1.61.1. CP-04 y CP-05 requieren ejecución manual por el estudiante. Resultados automatizados consolidados de ejecuciones separadas para no crear cuentas ni votar otra vez. Fallos iniciales de selectores corregidos; BUG-001 se mantiene.'
     sheet['B26'].alignment = Alignment(wrap_text=True, vertical='top')
     sheet.row_dimensions[26].height = 180
-    for validation in sheet.data_validations.dataValidation:
-        validation.formula1 = '"OK,FALLO,PENDIENTE MANUAL"'
+    sheet.data_validations.dataValidation.clear()
+    sheet.conditional_formatting._cf_rules.clear()
     sheet.print_options.horizontalCentered = True
     sheet.print_area = 'A1:I26'
     sheet.page_setup.orientation = 'landscape'
@@ -71,7 +101,7 @@ def workbook():
     book.save(OUT / 'Casos-de-prueba.xlsx')
 
 def bug(number, title, description, steps, expected, actual, evidence, image):
-    doc = Document(DOWNLOADS / 'Plantilla de reporte de errores (EJEMPLO).docx')
+    doc = Document(DOWNLOADS / 'Plantilla de reporte de errores (EJEMPLO) (2).docx')
     values = [number, 'Cesar · ejecución asistida por Codex', title, '14/11/2026', 'Windows (versión no verificada)', 'Chromium 149.0.7827.55 · Playwright 1.61.1', 'Media', 'Sin asignar']
     for row, value in zip(doc.tables[0].rows, values): row.cells[1].text = value
     replacements = {0: 'REPORTE DE ERROR · BUGGY CARS RATING', 3: description, 5: steps[0], 6: steps[1], 7: steps[2], 9: expected, 11: actual, 13: evidence, 17: 'Captura real de la ejecución del 14/11/2026.'}

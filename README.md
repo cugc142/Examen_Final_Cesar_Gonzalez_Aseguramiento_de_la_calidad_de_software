@@ -18,6 +18,50 @@ El contador pasó de 11043 a 11044 y el voto fue confirmado. El comentario tení
 
 Las capturas de CP-04 y CP-05 se obtuvieron mediante un script de verificación asistida. Para completar el requisito **manual**, el estudiante debe ejecutar los pasos personalmente, guardar sus capturas y actualizar el Excel. Al guardar edad `abc` apareció `Unknown error`; al volver al perfil se conservó la edad válida 25.
 
+## Descripción de las pruebas realizadas
+
+### CP-01 · Registro de usuario con datos válidos
+
+**Objetivo:** comprobar el registro solicitado por HU-1, criterios C1 y C2. Automatizamos el ingreso de un login único, nombre Cesar, apellido QA y una clave de 19 caracteres con mayúsculas, minúsculas, números y un carácter especial. Repetimos la clave en su confirmación y pulsamos Register.
+
+**Esperado y obtenido:** el sitio debía crear la cuenta y confirmar el registro. Mostró `Registration is successful`, por lo que el caso pasó. La cuenta creada se reutilizó en las pruebas de voto y perfil para evitar registros innecesarios.
+
+**Evidencia:** [captura del registro](evidencias/automaticos/CP-01.png). Implementación: [01-registro-valido.spec.ts](tests/01-registro-valido.spec.ts).
+
+### CP-02 · Registro con clave de siete caracteres
+
+**Objetivo:** verificar el mínimo de ocho caracteres de HU-1 C2. Completamos el registro con un login diferente y la clave `Qa12!xy`, que tiene siete caracteres e incluye mayúscula, minúsculas, números y un carácter especial. Pulsamos Register y comprobamos la respuesta.
+
+**Esperado y obtenido:** el registro debía rechazarse por longitud insuficiente. El sitio lo rechazó con `InvalidPasswordException: Password did not conform with policy: Password not long enough`. El caso pasó para C2. Documentamos por separado el mensaje técnico como **BUG-002**, relacionado con la claridad de errores de HU-1 C4.
+
+**Evidencia:** [captura del rechazo](evidencias/automaticos/CP-02.png). Implementación: [02-registro-clave-corta.spec.ts](tests/02-registro-clave-corta.spec.ts).
+
+### CP-03 · Votar por el primer auto con un comentario
+
+**Objetivo:** verificar HU-3 C1, C2 y C4. Abrimos Overall Rating y el primer auto, Lamborghini Diablo en esa ejecución. Sin sesión, comprobamos el mensaje `You need to be logged in to vote.`. Después iniciamos sesión con la cuenta registrada, anotamos el contador y emitimos un solo voto con un comentario único.
+
+**Esperado:** confirmación del voto, incremento de exactamente uno y publicación del comentario con fecha y autor. La misma cuenta no debía poder votar otra vez por ese auto.
+
+**Obtenido:** apareció `Thank you for your vote!` y el contador cambió de **11043 a 11044**. El comentario se publicó con fecha, pero la columna Author quedó vacía. Por ello el caso falló y se reportó **BUG-001**. En una comprobación posterior, sin emitir otro voto, confirmamos que el voto seguía registrado y ya no aparecía el botón Vote!.
+
+**Evidencia:** [comentario sin autor](evidencias/automaticos/CP-03-autor-ausente.png) y [comprobación al reingresar](evidencias/automaticos/CP-03-reingreso.png). Implementación: [03-voto-con-comentario.spec.ts](tests/03-voto-con-comentario.spec.ts).
+
+### CP-04 · Actualizar el perfil con datos válidos
+
+**Objetivo:** verificar que los datos de HU-2 C1 se conservan. Mediante verificación asistida abrimos Profile e ingresamos nombre Cesar, apellido QA, género Male, edad 25, dirección Ciudad de Guatemala, teléfono 55551234 y hobby Learning. Guardamos, salimos del perfil y volvimos a entrar para comparar los siete campos.
+
+**Esperado y obtenido:** debía confirmarse el guardado y recuperarse todos los valores. La verificación asistida confirmó ambos comportamientos. **La ejecución manual por el estudiante sigue pendiente**; este resultado no se presenta como una prueba realizada manualmente.
+
+**Evidencia:** [datos ingresados](evidencias/manuales/CP-04-01-datos-validos.png), [guardado](evidencias/manuales/CP-04-02-guardado.png) y [persistencia](evidencias/manuales/CP-04-03-persistencia.png).
+
+### CP-05 · Intentar guardar una edad con letras
+
+**Objetivo:** comprobar que la edad solo admite números según HU-2 C3. Con la edad válida 25 previamente guardada, cambiamos Age a `abc`, conservamos los demás datos válidos y pulsamos Save. Después salimos del perfil y volvimos a entrar.
+
+**Esperado y obtenido:** el sistema debía rechazar la edad con letras y conservar el valor válido anterior. Mostró `Unknown error`; al reabrir el perfil, Age seguía siendo 25. La verificación asistida pasó para C3, con la observación de que el mensaje no explica el formato permitido. **La ejecución manual por el estudiante sigue pendiente.**
+
+**Evidencia:** [edad con letras](evidencias/manuales/CP-05-01-edad-letras.png), [respuesta al guardar](evidencias/manuales/CP-05-02-guardado.png) y [edad conservada](evidencias/manuales/CP-05-03-persistencia.png).
+
 ## Instalación y ejecución
 
 En PowerShell, desde esta carpeta:
@@ -72,7 +116,11 @@ scripts/                       Captura manual y generación de documentos
 playwright.config.ts           Configuración e informes
 ```
 
-Se usaron las plantillas originales `Plantilla - Casos de prueba (EJEMPLO).xlsx` y `Plantilla de reporte de errores (EJEMPLO).docx` encontradas en Descargas. Los ejemplos se reemplazaron por resultados reales y los requisitos del examen (mínimo ocho caracteres).
+Se completaron las plantillas indicadas por el usuario: `Plantilla - Casos de prueba (EJEMPLO) (1).xlsx` y `Plantilla de reporte de errores (EJEMPLO) (2).docx`, ubicadas en Descargas. Se conserva su estructura y los ejemplos se reemplazaron por resultados reales y los requisitos del examen (mínimo ocho caracteres). Los originales de Descargas permanecen sin cambios; las versiones completadas están en el proyecto:
+
+- [Tabla Excel con los cinco casos](docs/Casos-de-prueba.xlsx).
+- [Reporte Word BUG-001: comentario sin autor](docs/bugs/BUG-001.docx).
+- [Reporte Word BUG-002: mensaje técnico de clave corta](docs/bugs/BUG-002.docx).
 
 Los JSON de `ejecucion-inicial/` y `ejecucion-voto/` conservan el historial, incluidos fallos de selectores de las primeras versiones. Esos errores del código de prueba fueron corregidos. CP-02 se volvió a ejecutar y pasó; su resultado definitivo está en `CP-02-resultados.json`. CP-03 no volvió a emitir un voto: el fallo del autor está respaldado por captura, video y `CP-03-observado.json`. El código actual usa una aserción suave para comprobar también la restricción del segundo voto aunque falte el autor.
 
