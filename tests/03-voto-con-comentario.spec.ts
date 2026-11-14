@@ -1,0 +1,33 @@
+import { test, expect } from '@playwright/test';
+import { account, login } from '../helpers/account';
+import fs from 'node:fs';
+
+test('CP-03 | HU-3 C1 C2 C4 | Voto con comentario en el primer auto', async ({ page }) => {
+  await page.goto('/overall');
+  const first = page.locator('tbody tr').first().locator('a[href^="/model/"]').first();
+  await expect(first).toBeVisible();
+  const href = await first.getAttribute('href');
+  await first.click();
+  await expect(page.getByRole('button', { name: 'Vote!', exact: true })).not.toBeVisible();
+  await expect(page.getByText('You need to be logged in to vote.')).toBeVisible();
+  await login(page);
+  await page.goto(href!);
+  const vote = page.getByRole('button', { name: 'Vote!', exact: true });
+  await expect(page.locator('h4').filter({ hasText: 'Votes:' })).toBeVisible();
+  test.skip(await page.getByText('Thank you for your vote!').isVisible(), 'Esta cuenta ya votó por el primer auto; no repetir el voto.');
+  const counter = page.locator('h4').filter({ hasText: 'Votes:' });
+  const before = Number((await counter.innerText()).match(/\d+/)![0]);
+  const comment = `Prueba académica QA ${Date.now()}: diseño del auto interesante.`;
+  await page.locator('#comment').fill(comment);
+  await vote.click();
+  await expect(page.getByText('Thank you for your vote!')).toBeVisible();
+  await expect(counter).toHaveText(new RegExp(`Votes:\\s*${before + 1}\\b`));
+  fs.writeFileSync('playwright/.auth/vote.json', JSON.stringify({ href, before, after: before + 1, comment }, null, 2));
+  const row = page.locator('tbody tr').filter({ hasText: comment });
+  await expect(row).toBeVisible();
+  await expect.soft(row.locator('td').nth(1), 'HU-3 C4: el comentario debe mostrar su autor').toContainText(account().firstName);
+  await expect.soft(row.locator('td').first()).toContainText(/\d/);
+  await page.reload();
+  await expect(page.getByText('Thank you for your vote!')).toBeVisible();
+  await expect(vote).not.toBeVisible();
+});

@@ -1,0 +1,13 @@
+{
+  "name": "proyecto-qa-buggy-cars",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "report": "playwright show-report",
+    "manual": "node scripts/manual.cjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.1"
+  }
+}

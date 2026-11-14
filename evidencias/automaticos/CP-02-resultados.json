@@ -1,0 +1,142 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/02-registro-clave-corta.spec.ts"
+    ],
+    "configFile": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\playwright.config.ts",
+    "rootDir": "C:/Users/cesar/OneDrive/Desktop/proyecto-qa-buggy-cars/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/cesar/OneDrive/Desktop/proyecto-qa-buggy-cars/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/cesar/OneDrive/Desktop/proyecto-qa-buggy-cars/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "evidencias/automaticos/resultados.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "02-registro-clave-corta.spec.ts",
+      "file": "02-registro-clave-corta.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "CP-02 | HU-1 C2 | Rechazar clave de siete caracteres",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5199,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T16:48:10.365Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\02-registro-clave-corta-CP-41bf5-r-clave-de-siete-caracteres\\test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\02-registro-clave-corta-CP-41bf5-r-clave-de-siete-caracteres\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\02-registro-clave-corta-CP-41bf5-r-clave-de-siete-caracteres\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "4e3e4d5f3e3651cb1ebb-13ab5ef08235527b7de6",
+          "file": "02-registro-clave-corta.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-14T16:48:09.529Z",
+    "duration": 6304.113,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

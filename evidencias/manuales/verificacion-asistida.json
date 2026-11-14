@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-14T16:49:06.119Z",
+  "method": "Verificación asistida con Playwright; pendiente ejecución manual por el estudiante",
+  "browser": "149.0.7827.55",
+  "CP04": {
+    "status": "OK en verificación asistida",
+    "values": {
+      "firstName": "Cesar",
+      "lastName": "QA",
+      "gender": "Male",
+      "age": "25",
+      "address": "Ciudad de Guatemala",
+      "phone": "55551234",
+      "hobby": "Learning"
+    }
+  },
+  "CP05": {
+    "status": "OK en verificacion asistida: edad con letras rechazada",
+    "message": "Unknown error",
+    "ageAfterReentry": "25",
+    "observation": "Unknown error no explica el formato valido."
+  }
+}

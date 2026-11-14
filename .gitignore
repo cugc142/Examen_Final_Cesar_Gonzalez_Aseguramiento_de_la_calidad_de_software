@@ -1,0 +1,10 @@
+/node_modules/
+/playwright-report/
+/test-results/
+/playwright/.cache/
+/playwright/.auth/
+/.env
+/.env.*
+/.tools/
+__pycache__/
+/evidencias/**/trace.zip

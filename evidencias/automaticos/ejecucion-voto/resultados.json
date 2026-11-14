@@ -1,0 +1,259 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "tests/02-registro-clave-corta.spec.ts",
+      "tests/03-voto-con-comentario.spec.ts"
+    ],
+    "configFile": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\playwright.config.ts",
+    "rootDir": "C:/Users/cesar/OneDrive/Desktop/proyecto-qa-buggy-cars/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/cesar/OneDrive/Desktop/proyecto-qa-buggy-cars/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/cesar/OneDrive/Desktop/proyecto-qa-buggy-cars/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "evidencias/automaticos/resultados.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "02-registro-clave-corta.spec.ts",
+      "file": "02-registro-clave-corta.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "CP-02 | HU-1 C2 | Rechazar clave de siete caracteres",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20931,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.result')\nTimeout: 15000ms\nExpected pattern: \u001b[32m/password.*(short|length|8)|minimum.*8/i\u001b[39m\nReceived string:  \u001b[31m\"\u001b[39m\n\u001b[31m                InvalidPasswordException: Password did not conform with policy: Password not long enough\u001b[39m\n\u001b[31m            \"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.result')\u001b[22m\n\u001b[2m    33 × locator resolved to <div _ngcontent-ddn-4=\"\" class=\"result alert alert-danger\">↵                InvalidPasswordException: Passwo…</div>\u001b[22m\n\u001b[2m       - unexpected value \"\u001b[22m\n\u001b[2m                InvalidPasswordException: Password did not conform with policy: Password not long enough\u001b[22m\n\u001b[2m            \"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.result')\nTimeout: 15000ms\nExpected pattern: \u001b[32m/password.*(short|length|8)|minimum.*8/i\u001b[39m\nReceived string:  \u001b[31m\"\u001b[39m\n\u001b[31m                InvalidPasswordException: Password did not conform with policy: Password not long enough\u001b[39m\n\u001b[31m            \"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.result')\u001b[22m\n\u001b[2m    33 × locator resolved to <div _ngcontent-ddn-4=\"\" class=\"result alert alert-danger\">↵                InvalidPasswordException: Passwo…</div>\u001b[22m\n\u001b[2m       - unexpected value \"\u001b[22m\n\u001b[2m                InvalidPasswordException: Password did not conform with policy: Password not long enough\u001b[22m\n\u001b[2m            \"\u001b[22m\n\n    at C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\02-registro-clave-corta.spec.ts:8:41",
+                    "location": {
+                      "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\02-registro-clave-corta.spec.ts",
+                      "column": 41,
+                      "line": 8
+                    },
+                    "snippet": "   6 |   await expect(page.getByRole('button', { name: 'Register', exact: true })).toBeEnabled();\n   7 |   await expect(page.getByText('Registration is successful')).not.toBeVisible();\n>  8 |   await expect(page.locator('.result')).toContainText(/password.*(short|length|8)|minimum.*8/i);\n     |                                         ^\n   9 | });\n  10 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\02-registro-clave-corta.spec.ts",
+                        "column": 41,
+                        "line": 8
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.result')\nTimeout: 15000ms\nExpected pattern: \u001b[32m/password.*(short|length|8)|minimum.*8/i\u001b[39m\nReceived string:  \u001b[31m\"\u001b[39m\n\u001b[31m                InvalidPasswordException: Password did not conform with policy: Password not long enough\u001b[39m\n\u001b[31m            \"\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.result')\u001b[22m\n\u001b[2m    33 × locator resolved to <div _ngcontent-ddn-4=\"\" class=\"result alert alert-danger\">↵                InvalidPasswordException: Passwo…</div>\u001b[22m\n\u001b[2m       - unexpected value \"\u001b[22m\n\u001b[2m                InvalidPasswordException: Password did not conform with policy: Password not long enough\u001b[22m\n\u001b[2m            \"\u001b[22m\n\n\n   6 |   await expect(page.getByRole('button', { name: 'Register', exact: true })).toBeEnabled();\n   7 |   await expect(page.getByText('Registration is successful')).not.toBeVisible();\n>  8 |   await expect(page.locator('.result')).toContainText(/password.*(short|length|8)|minimum.*8/i);\n     |                                         ^\n   9 | });\n  10 |\n    at C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\02-registro-clave-corta.spec.ts:8:41"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T16:45:29.237Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\02-registro-clave-corta-CP-41bf5-r-clave-de-siete-caracteres\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\02-registro-clave-corta-CP-41bf5-r-clave-de-siete-caracteres\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\02-registro-clave-corta-CP-41bf5-r-clave-de-siete-caracteres\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\02-registro-clave-corta-CP-41bf5-r-clave-de-siete-caracteres\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\02-registro-clave-corta.spec.ts",
+                    "column": 41,
+                    "line": 8
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4e3e4d5f3e3651cb1ebb-13ab5ef08235527b7de6",
+          "file": "02-registro-clave-corta.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "03-voto-con-comentario.spec.ts",
+      "file": "03-voto-con-comentario.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "CP-03 | HU-3 C1 C2 C4 | Voto con comentario en el primer auto",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 56157,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('tbody tr').filter({ hasText: 'Prueba académica QA 1794674778390: diseño del auto interesante.' })\nTimeout: 15000ms\n\u001b[32m- Expected substring  - 1\u001b[39m\n\u001b[31m+ Received string     + 5\u001b[39m\n\n\u001b[32m- Cesar\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+                     Nov 14, 2026, 10:46:23 AM\u001b[39m\n\u001b[31m+ \u001b[43m                    \u001b[49m\u001b[39m\n\u001b[31m+                     Prueba académica QA 1794674778390: diseño del auto interesante.\u001b[39m\n\u001b[31m+ \u001b[43m                \u001b[49m\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('tbody tr').filter({ hasText: 'Prueba académica QA 1794674778390: diseño del auto interesante.' })\u001b[22m\n\u001b[2m    32 × locator resolved to <tr>…</tr>\u001b[22m\n\u001b[2m       - unexpected value \"\u001b[22m\n\u001b[2m                    Nov 14, 2026, 10:46:23 AM\u001b[22m\n\u001b[2m                    \u001b[22m\n\u001b[2m                    Prueba académica QA 1794674778390: diseño del auto interesante.\u001b[22m\n\u001b[2m                \"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('tbody tr').filter({ hasText: 'Prueba académica QA 1794674778390: diseño del auto interesante.' })\nTimeout: 15000ms\n\u001b[32m- Expected substring  - 1\u001b[39m\n\u001b[31m+ Received string     + 5\u001b[39m\n\n\u001b[32m- Cesar\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+                     Nov 14, 2026, 10:46:23 AM\u001b[39m\n\u001b[31m+ \u001b[43m                    \u001b[49m\u001b[39m\n\u001b[31m+                     Prueba académica QA 1794674778390: diseño del auto interesante.\u001b[39m\n\u001b[31m+ \u001b[43m                \u001b[49m\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('tbody tr').filter({ hasText: 'Prueba académica QA 1794674778390: diseño del auto interesante.' })\u001b[22m\n\u001b[2m    32 × locator resolved to <tr>…</tr>\u001b[22m\n\u001b[2m       - unexpected value \"\u001b[22m\n\u001b[2m                    Nov 14, 2026, 10:46:23 AM\u001b[22m\n\u001b[2m                    \u001b[22m\n\u001b[2m                    Prueba académica QA 1794674778390: diseño del auto interesante.\u001b[22m\n\u001b[2m                \"\u001b[22m\n\n    at C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\03-voto-con-comentario.spec.ts:27:21",
+                    "location": {
+                      "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\03-voto-con-comentario.spec.ts",
+                      "column": 21,
+                      "line": 27
+                    },
+                    "snippet": "  25 |   const row = page.locator('tbody tr').filter({ hasText: comment });\n  26 |   await expect(row).toBeVisible();\n> 27 |   await expect(row).toContainText(account().firstName);\n     |                     ^\n  28 |   await expect(row.locator('td').first()).toContainText(/\\d/);\n  29 |   await page.reload();\n  30 |   await expect(page.getByText('Thank you for your vote!')).toBeVisible();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\03-voto-con-comentario.spec.ts",
+                        "column": 21,
+                        "line": 27
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('tbody tr').filter({ hasText: 'Prueba académica QA 1794674778390: diseño del auto interesante.' })\nTimeout: 15000ms\n\u001b[32m- Expected substring  - 1\u001b[39m\n\u001b[31m+ Received string     + 5\u001b[39m\n\n\u001b[32m- Cesar\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+                     Nov 14, 2026, 10:46:23 AM\u001b[39m\n\u001b[31m+ \u001b[43m                    \u001b[49m\u001b[39m\n\u001b[31m+                     Prueba académica QA 1794674778390: diseño del auto interesante.\u001b[39m\n\u001b[31m+ \u001b[43m                \u001b[49m\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('tbody tr').filter({ hasText: 'Prueba académica QA 1794674778390: diseño del auto interesante.' })\u001b[22m\n\u001b[2m    32 × locator resolved to <tr>…</tr>\u001b[22m\n\u001b[2m       - unexpected value \"\u001b[22m\n\u001b[2m                    Nov 14, 2026, 10:46:23 AM\u001b[22m\n\u001b[2m                    \u001b[22m\n\u001b[2m                    Prueba académica QA 1794674778390: diseño del auto interesante.\u001b[22m\n\u001b[2m                \"\u001b[22m\n\n\n  25 |   const row = page.locator('tbody tr').filter({ hasText: comment });\n  26 |   await expect(row).toBeVisible();\n> 27 |   await expect(row).toContainText(account().firstName);\n     |                     ^\n  28 |   await expect(row.locator('td').first()).toContainText(/\\d/);\n  29 |   await page.reload();\n  30 |   await expect(page.getByText('Thank you for your vote!')).toBeVisible();\n    at C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\03-voto-con-comentario.spec.ts:27:21"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T16:45:50.738Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\03-voto-con-comentario-CP--57782-omentario-en-el-primer-auto\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\03-voto-con-comentario-CP--57782-omentario-en-el-primer-auto\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\03-voto-con-comentario-CP--57782-omentario-en-el-primer-auto\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\03-voto-con-comentario-CP--57782-omentario-en-el-primer-auto\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\03-voto-con-comentario.spec.ts",
+                    "column": 21,
+                    "line": 27
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7f2d8cb10bfd5ac02e2f-f4a7207a00dd1ff61fcf",
+          "file": "03-voto-con-comentario.spec.ts",
+          "line": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-14T16:45:28.817Z",
+    "duration": 78586.602,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

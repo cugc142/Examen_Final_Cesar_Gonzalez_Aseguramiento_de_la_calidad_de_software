@@ -1,0 +1,315 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\playwright.config.ts",
+    "rootDir": "C:/Users/cesar/OneDrive/Desktop/proyecto-qa-buggy-cars/tests",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/Users/cesar/OneDrive/Desktop/proyecto-qa-buggy-cars/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "C:/Users/cesar/OneDrive/Desktop/proyecto-qa-buggy-cars/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "html",
+        {
+          "open": "never"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "evidencias/automaticos/resultados.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.61.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "01-registro-valido.spec.ts",
+      "file": "01-registro-valido.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "CP-01 | HU-1 C1 C2 | Registro con datos válidos",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 5786,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T16:44:14.364Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\01-registro-valido-CP-01-H-58dbb--Registro-con-datos-válidos\\test-finished-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\01-registro-valido-CP-01-H-58dbb--Registro-con-datos-válidos\\video.webm"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\01-registro-valido-CP-01-H-58dbb--Registro-con-datos-válidos\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "44afb0d16de43558c2f0-5d3f9099b6758be7b281",
+          "file": "01-registro-valido.spec.ts",
+          "line": 5,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "02-registro-clave-corta.spec.ts",
+      "file": "02-registro-clave-corta.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "CP-02 | HU-1 C2 | Rechazar clave de siete caracteres",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 2330,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected pattern: \u001b[32m/password.*(short|length|8)|minimum.*8/i\u001b[39m\nError: strict mode violation: locator('.alert-danger') resolved to 6 elements:\n    1) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Login is required↵          …</div> aka getByText('Login is required')\n    2) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Login cannot be more than 50…</div> aka getByText('Login cannot be more than 50')\n    3) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    First Name is required↵     …</div> aka getByText('First Name is required').first()\n    4) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    First Name is required↵     …</div> aka getByText('First Name is required').nth(1)\n    5) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Password is required↵       …</div> aka getByText('Password is required')\n    6) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Passwords do not match↵     …</div> aka getByText('Passwords do not match')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected pattern: \u001b[32m/password.*(short|length|8)|minimum.*8/i\u001b[39m\nError: strict mode violation: locator('.alert-danger') resolved to 6 elements:\n    1) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Login is required↵          …</div> aka getByText('Login is required')\n    2) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Login cannot be more than 50…</div> aka getByText('Login cannot be more than 50')\n    3) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    First Name is required↵     …</div> aka getByText('First Name is required').first()\n    4) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    First Name is required↵     …</div> aka getByText('First Name is required').nth(1)\n    5) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Password is required↵       …</div> aka getByText('Password is required')\n    6) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Passwords do not match↵     …</div> aka getByText('Passwords do not match')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n    at C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\02-registro-clave-corta.spec.ts:7:47",
+                    "location": {
+                      "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\02-registro-clave-corta.spec.ts",
+                      "column": 47,
+                      "line": 7
+                    },
+                    "snippet": "  5 |   await register(page, { ...account(), login: `${account().login}_corta`, password: 'Qa12!xy' });\n  6 |   await expect(page.getByText('Registration is successful')).not.toBeVisible();\n> 7 |   await expect(page.locator('.alert-danger')).toContainText(/password.*(short|length|8)|minimum.*8/i);\n    |                                               ^\n  8 | });\n  9 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\02-registro-clave-corta.spec.ts",
+                        "column": 47,
+                        "line": 7
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('.alert-danger')\nExpected pattern: \u001b[32m/password.*(short|length|8)|minimum.*8/i\u001b[39m\nError: strict mode violation: locator('.alert-danger') resolved to 6 elements:\n    1) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Login is required↵          …</div> aka getByText('Login is required')\n    2) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Login cannot be more than 50…</div> aka getByText('Login cannot be more than 50')\n    3) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    First Name is required↵     …</div> aka getByText('First Name is required').first()\n    4) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    First Name is required↵     …</div> aka getByText('First Name is required').nth(1)\n    5) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Password is required↵       …</div> aka getByText('Password is required')\n    6) <div hidden=\"\" _ngcontent-cua-4=\"\" class=\"alert alert-danger\">↵                    Passwords do not match↵     …</div> aka getByText('Passwords do not match')\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('.alert-danger')\u001b[22m\n\n\n  5 |   await register(page, { ...account(), login: `${account().login}_corta`, password: 'Qa12!xy' });\n  6 |   await expect(page.getByText('Registration is successful')).not.toBeVisible();\n> 7 |   await expect(page.locator('.alert-danger')).toContainText(/password.*(short|length|8)|minimum.*8/i);\n    |                                               ^\n  8 | });\n  9 |\n    at C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\02-registro-clave-corta.spec.ts:7:47"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T16:44:20.329Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\02-registro-clave-corta-CP-41bf5-r-clave-de-siete-caracteres\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\02-registro-clave-corta-CP-41bf5-r-clave-de-siete-caracteres\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\02-registro-clave-corta-CP-41bf5-r-clave-de-siete-caracteres\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\02-registro-clave-corta-CP-41bf5-r-clave-de-siete-caracteres\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\02-registro-clave-corta.spec.ts",
+                    "column": 47,
+                    "line": 7
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "4e3e4d5f3e3651cb1ebb-13ab5ef08235527b7de6",
+          "file": "02-registro-clave-corta.spec.ts",
+          "line": 4,
+          "column": 5
+        }
+      ]
+    },
+    {
+      "title": "03-voto-con-comentario.spec.ts",
+      "file": "03-voto-con-comentario.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "CP-03 | HU-3 C1 C2 C4 | Voto con comentario en el primer auto",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 23089,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/login.*vote/i)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/login.*vote/i)\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/login.*vote/i)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/login.*vote/i)\u001b[22m\n\n    at C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\03-voto-con-comentario.spec.ts:12:48",
+                    "location": {
+                      "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\03-voto-con-comentario.spec.ts",
+                      "column": 48,
+                      "line": 12
+                    },
+                    "snippet": "  10 |   await first.click();\n  11 |   await expect(page.getByRole('button', { name: 'Vote!', exact: true })).not.toBeVisible();\n> 12 |   await expect(page.getByText(/login.*vote/i)).toBeVisible();\n     |                                                ^\n  13 |   await login(page);\n  14 |   await page.goto(href!);\n  15 |   const vote = page.getByRole('button', { name: 'Vote!', exact: true });"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\03-voto-con-comentario.spec.ts",
+                        "column": 48,
+                        "line": 12
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByText(/login.*vote/i)\nExpected: visible\nTimeout: 15000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByText(/login.*vote/i)\u001b[22m\n\n\n  10 |   await first.click();\n  11 |   await expect(page.getByRole('button', { name: 'Vote!', exact: true })).not.toBeVisible();\n> 12 |   await expect(page.getByText(/login.*vote/i)).toBeVisible();\n     |                                                ^\n  13 |   await login(page);\n  14 |   await page.goto(href!);\n  15 |   const vote = page.getByRole('button', { name: 'Vote!', exact: true });\n    at C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\03-voto-con-comentario.spec.ts:12:48"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-11-14T16:44:23.347Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\03-voto-con-comentario-CP--57782-omentario-en-el-primer-auto\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\03-voto-con-comentario-CP--57782-omentario-en-el-primer-auto\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\03-voto-con-comentario-CP--57782-omentario-en-el-primer-auto\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\test-results\\03-voto-con-comentario-CP--57782-omentario-en-el-primer-auto\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\Users\\cesar\\OneDrive\\Desktop\\proyecto-qa-buggy-cars\\tests\\03-voto-con-comentario.spec.ts",
+                    "column": 48,
+                    "line": 12
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "7f2d8cb10bfd5ac02e2f-f4a7207a00dd1ff61fcf",
+          "file": "03-voto-con-comentario.spec.ts",
+          "line": 5,
+          "column": 5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-11-14T16:44:13.733Z",
+    "duration": 33195.125,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

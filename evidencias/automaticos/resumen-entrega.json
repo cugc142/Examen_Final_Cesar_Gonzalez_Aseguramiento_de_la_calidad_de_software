@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-14",
+  "browser": "Chromium 149.0.7827.55",
+  "cases": {
+    "CP-01": {
+      "status": "OK",
+      "source": "ejecucion-inicial/resultados.json"
+    },
+    "CP-02": {
+      "status": "OK",
+      "source": "CP-02-resultados.json"
+    },
+    "CP-03": {
+      "status": "FALLO",
+      "defect": "BUG-001",
+      "source": "ejecucion-voto/resultados.json",
+      "observation": "Voto confirmado, 11043 a 11044, comentario con fecha y autor vacio."
+    },
+    "CP-04": {
+      "status": "PENDIENTE MANUAL",
+      "assistedVerification": "OK",
+      "source": "../manuales/verificacion-asistida.json"
+    },
+    "CP-05": {
+      "status": "PENDIENTE MANUAL",
+      "assistedVerification": "OK",
+      "source": "../manuales/verificacion-asistida.json"
+    }
+  }
+}

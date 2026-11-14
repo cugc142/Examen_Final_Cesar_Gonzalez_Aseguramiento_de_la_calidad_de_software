@@ -1,0 +1,12 @@
+{
+  "car": "Lamborghini Diablo",
+  "before": 11043,
+  "after": 11044,
+  "countSource": "trace.zip: successful toHaveText Votes 11044 after original count read",
+  "comment": "Prueba académica QA 1794674778390: diseño del auto interesante.",
+  "author": "",
+  "date": "Nov 14, 2026, 10:46:23 AM",
+  "confirmation": true,
+  "voteButtonCount": 0,
+  "note": "Verificación posterior sin emitir otro voto"
+}
